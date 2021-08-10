@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform _point;
+    [SerializeField] private Rigidbody _rb;
+    private bool isFreedom;
+    public Rigidbody Rb => _rb;
+    public void FireStart()
     {
-        Destroy(gameObject, 3f);
+        isFreedom = true;
+        StartCoroutine(RestartPos());
     }
     private void Update()
     {
-        if (transform.position.y < 0) Destroy(gameObject);
+        if (!isFreedom) transform.position = _point.position;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -19,8 +23,23 @@ public class Ball : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             GameController.Instance.Checkfinish();
-            Destroy(gameObject);
+            transform.position = _point.position;
+            transform.rotation = _point.rotation;
+            _rb.velocity = Vector3.zero;
+            isFreedom = false;
+
         }
-        else if (collision.transform.GetComponent<EnemyController>()) Destroy(gameObject);
+        else if (collision.transform.GetComponent<EnemyController>())
+        {
+            _rb.velocity = Vector3.zero;
+            transform.rotation = _point.rotation;
+            isFreedom = false;
+        }
+    }
+
+    IEnumerator RestartPos()
+    {
+        yield return new WaitForSeconds(3f);
+        isFreedom = false;
     }
 }
