@@ -60,37 +60,37 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11334}
+      Script: {instanceID: 11360}
     - Class: 114
-      Script: {instanceID: 11400}
+      Script: {instanceID: 11434}
     - Class: 114
-      Script: {instanceID: 11542}
+      Script: {instanceID: 11594}
     - Class: 114
-      Script: {instanceID: 11764}
+      Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 11946}
+      Script: {instanceID: 12044}
     - Class: 114
-      Script: {instanceID: 11972}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12160}
+      Script: {instanceID: 12300}
     - Class: 114
-      Script: {instanceID: 12348}
+      Script: {instanceID: 12514}
     - Class: 114
-      Script: {instanceID: 12382}
+      Script: {instanceID: 12550}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12624}
     - Class: 114
-      Script: {instanceID: 12578}
+      Script: {instanceID: 12770}
     - Class: 114
-      Script: {instanceID: 12592}
+      Script: {instanceID: 12786}
     - Class: 114
-      Script: {instanceID: 12788}
+      Script: {instanceID: 13012}
     - Class: 114
-      Script: {instanceID: 12850}
+      Script: {instanceID: 13076}
     - Class: 114
-      Script: {instanceID: 13010}
+      Script: {instanceID: 13278}
     - Class: 114
-      Script: {instanceID: 13210}
+      Script: {instanceID: 13500}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -142,7 +142,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 0aa90cbeab9b6022c4643ae88877c9bf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Ball
@@ -380,6 +380,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
+  - hash:
+      serializedVersion: 2
+      Hash: 49101319b21043357cb80c5aba043e1d
+    assemblyName: Unity.Recorder.dll
+    namespaceName: UnityEngine.Recorder
+    className: RecorderBindings
   - hash:
       serializedVersion: 2
       Hash: 8bb655546d2df12a57e8508a236cb2cf

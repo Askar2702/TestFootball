@@ -42,7 +42,6 @@ public class Shoot : MonoBehaviour
         if (!isPressed) return;
         _forse *= _impulse;
         _arrow.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-        if (_ball.transform.position != _point.position) return;
         _ball.Rb.AddForce(_point.forward * _forse, ForceMode.Force);
         _ball.FireStart();
         Fire?.Invoke(_ball);

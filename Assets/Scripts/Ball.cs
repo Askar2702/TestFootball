@@ -7,15 +7,36 @@ public class Ball : MonoBehaviour
     [SerializeField] private Transform _point;
     [SerializeField] private Rigidbody _rb;
     private bool isFreedom;
+    private float _timer = 3f;
     public Rigidbody Rb => _rb;
     public void FireStart()
     {
         isFreedom = true;
-        StartCoroutine(RestartPos());
     }
+    private void FixedUpdate()
+    {
+        if (!isFreedom) 
+        { 
+            transform.position = _point.position;
+            _timer = 3;
+        }
+       
+    }
+
     private void Update()
     {
-        if (!isFreedom) transform.position = _point.position;
+        if (isFreedom)
+        {
+            if (_timer > 0)
+            {
+                _timer -= Time.deltaTime;
+            }
+            else if (_timer <= 0)
+            {
+                _timer = 3;
+                isFreedom = false;
+            }
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -37,9 +58,5 @@ public class Ball : MonoBehaviour
         }
     }
 
-    IEnumerator RestartPos()
-    {
-        yield return new WaitForSeconds(3f);
-        isFreedom = false;
-    }
+    
 }
