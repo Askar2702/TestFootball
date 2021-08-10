@@ -9,7 +9,10 @@ public class Ball : MonoBehaviour
     {
         Destroy(gameObject, 3f);
     }
-
+    private void Update()
+    {
+        if (transform.position.y < 0) Destroy(gameObject);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Block"))

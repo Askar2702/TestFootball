@@ -21,15 +21,13 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
-        if (UIManager.Instance.GameState == GameMode.Play)
+        if (UIManager.Instance.GameState != GameMode.Play) return;
+        if (Input.GetMouseButton(0))
         {
-            if (Input.GetMouseButton(0))
-            {
-                TargetGuidance();
-            }
-            else if (Input.GetMouseButtonUp(0))
-                ShootBall();
+            TargetGuidance();
         }
+        else if (Input.GetMouseButtonUp(0))
+            ShootBall();
     }
 
     private void TargetGuidance()
@@ -49,7 +47,7 @@ public class Shoot : MonoBehaviour
         _arrow.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         if (currentBall != null) return;
         _forse *= _impulse;
-        currentBall  = Instantiate(_ball, _point.position, _point.rotation);
+        currentBall = Instantiate(_ball, _point.position, _point.rotation);
         currentBall.GetComponent<Rigidbody>().AddForce(_point.forward * _forse, ForceMode.Force);
         Fire?.Invoke(currentBall);
     }

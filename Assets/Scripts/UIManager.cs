@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         if (!Instance) Instance = this;
-        GameController.Instance.Finishing += FinishGame;
         _startGame.onClick.AddListener(() => StartGame());
         _exitGame.onClick.AddListener(() => ExitGame());
         _pauseGame.onClick.AddListener(() => PauseGame());
@@ -25,6 +24,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         GameState = GameMode.Start;
+        GameController.Instance.Finishing += FinishGame;
     }
    
     private void FinishGame()

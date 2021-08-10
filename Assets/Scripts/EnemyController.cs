@@ -12,9 +12,11 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         _shoot.Fire += Appropriation;
+    }
+    private void Start()
+    {
         GameController.Instance.Finishing += UpSpeed;
     }
-
     private void FixedUpdate()
     {
         if (_ball != null)
