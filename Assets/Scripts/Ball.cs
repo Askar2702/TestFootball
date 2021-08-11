@@ -6,16 +6,16 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private Transform _point;
     [SerializeField] private Rigidbody _rb;
-    private bool isFreedom;
+    public bool IsFreedom { get; private set; }
     private float _timer = 3f;
     public Rigidbody Rb => _rb;
     public void FireStart()
     {
-        isFreedom = true;
+        IsFreedom = true;
     }
     private void FixedUpdate()
     {
-        if (!isFreedom) 
+        if (!IsFreedom) 
         { 
             transform.position = _point.position;
             _timer = 3;
@@ -25,7 +25,7 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (isFreedom)
+        if (IsFreedom)
         {
             if (_timer > 0)
             {
@@ -34,7 +34,7 @@ public class Ball : MonoBehaviour
             else if (_timer <= 0)
             {
                 _timer = 3;
-                isFreedom = false;
+                IsFreedom = false;
             }
         }
     }
@@ -46,15 +46,14 @@ public class Ball : MonoBehaviour
             GameController.Instance.Checkfinish();
             transform.position = _point.position;
             transform.rotation = _point.rotation;
-            _rb.velocity = Vector3.zero;
-            isFreedom = false;
+            IsFreedom = false;
 
         }
         else if (collision.transform.GetComponent<EnemyController>())
         {
             _rb.velocity = Vector3.zero;
             transform.rotation = _point.rotation;
-            isFreedom = false;
+            IsFreedom = false;
         }
     }
 

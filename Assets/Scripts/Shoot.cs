@@ -39,7 +39,7 @@ public class Shoot : MonoBehaviour
 
     private void ShootBall()
     {
-        if (!isPressed) return;
+        if (!isPressed || _ball.IsFreedom) return;
         _forse *= _impulse;
         _arrow.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         _ball.Rb.AddForce(_point.forward * _forse, ForceMode.Force);
